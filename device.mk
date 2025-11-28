@@ -185,7 +185,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     ApertureMiatoll \
-    LineageDialerMiatoll \
     LineageSDKMiatoll
 
 # Partitions
