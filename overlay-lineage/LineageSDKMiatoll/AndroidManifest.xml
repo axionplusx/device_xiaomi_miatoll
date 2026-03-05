@@ -4,10 +4,10 @@
      SPDX-License-Identifier: Apache-2.0
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.lineageos.aperture.xiaomi_sm6250">
+    package="lineageos.platform.miatoll">
 
     <overlay
         android:isStatic="true"
         android:priority="100"
-        android:targetPackage="org.lineageos.aperture" />
+        android:targetPackage="lineageos.platform" />
 </manifest>
