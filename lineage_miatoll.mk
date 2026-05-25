@@ -1,4 +1,3 @@
-#
 # SPDX-FileCopyrightText: The LineageOS Project
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -14,6 +13,13 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Inherit from miatoll device
 $(call inherit-product, device/xiaomi/miatoll/device.mk)
+
+# Lunaris-AOSP
+LUNARIS_BUILD_TYPE := OFFICIAL
+WITH_GMS := true
+USE_REALITY_ENGINE := true
+TARGET_OPTIMIZED_DEXOPT := true
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2400

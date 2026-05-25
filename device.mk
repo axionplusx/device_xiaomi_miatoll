@@ -181,6 +181,7 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_PACKAGES += \
     CarrierConfigResCommon \
     FrameworksMiatoll \
+    SettingsResMiatoll \
     SystemUIMiatoll \
     TelephonyResCommon \
     WifiOverlay
