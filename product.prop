@@ -1,5 +1,2 @@
 # eBPF
 ro.bpf.kver_override=5.10.239
-
-# Lunaris-AOSP
-ro.lunaris.maintainer=Drxkaii
