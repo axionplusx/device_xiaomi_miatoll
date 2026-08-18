@@ -51,6 +51,13 @@ function configure_zram_parameters() {
 		let zRamSizeMB=4096
 	fi
 
+	# AxionOS: User-configured ZRAM size (persist.sys.ax_zram_size_mb)
+	userZramSizeMB=$(getprop persist.sys.ax_zram_size_mb)
+	if [ -n "$userZramSizeMB" ] && [ "$userZramSizeMB" -gt 0 ] 2>/dev/null; then
+		zRamSizeMB=$userZramSizeMB
+	fi
+
+
 	echo lz4 > /sys/block/zram0/comp_algorithm
 
 	if [ -f /sys/block/zram0/disksize ]; then
