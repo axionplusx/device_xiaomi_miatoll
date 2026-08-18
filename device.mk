@@ -183,8 +183,10 @@ PRODUCT_PACKAGES += \
     WifiOverlay
 
 PRODUCT_PACKAGES += \
-    ApertureMiatoll \
     LineageSDKMiatoll
+
+PRODUCT_PACKAGES_REMOVE += \
+    Aperture
 
 # Partitions
 PRODUCT_PACKAGES += \
@@ -371,5 +373,10 @@ PRODUCT_PACKAGES += \
 # Inherit proprietary targets
 $(call inherit-product, vendor/xiaomi/miatoll/miatoll-vendor.mk)
 
-# Miui-Camera
-$(call inherit-product-if-exists, vendor/xiaomi/miuicamera-miatoll/MiuiCamera.mk)
+# Leica MIUI Camera (miatoll)
+$(call inherit-product-if-exists, device/xiaomi/miuicamera-miatoll/device.mk)
+
+# AxionOS Configuration Flags
+TARGET_DOZE_DOUBLE_TAP_PULSE_SUPPORTED := true
+TARGET_DOZE_PICKUP_PULSE_SUPPORTED := true
+

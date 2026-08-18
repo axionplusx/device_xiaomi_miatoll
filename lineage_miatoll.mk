@@ -9,6 +9,29 @@ TARGET_SUPPORTS_OMX_SERVICE := false
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/non_ab_device.mk)
 
+# AxionOS Flags
+TARGET_DISABLE_EPPE := true
+TARGET_INCLUDES_LOS_PREBUILTS := true
+
+# Enable AxionFx
+TARGET_INCLUDE_AXFX := true
+
+# Enable debugging (persist.sys.ax_debug_enabled=1)
+TARGET_ENABLE_AX_DEBUG := true
+
+
+# Google Mobile Services (Full GMS)
+WITH_GMS := true
+TARGET_GAPPS_VARIANT := gms
+TARGET_INCLUDE_GOOGLE_TELECOMM := true
+TARGET_INCLUDE_PARTNER_SETUP := true
+
+# AxionOS Device Properties
+AXION_CAMERA_REAR_INFO := 64,8,5,2
+AXION_CAMERA_FRONT_INFO := 16
+AXION_MAINTAINER := AbdoElbanaa
+AXION_PROCESSOR := Snapdragon_720G
+
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
