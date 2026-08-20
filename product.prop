@@ -1,2 +1,27 @@
 # eBPF
 ro.bpf.kver_override=5.10.239
+
+# Google Mobile Services & Assistant / Gemini Experience
+ro.opa.eligible_device=true
+ro.setupwizard.rotation_locked=true
+ro.storage_manager.show_opt_in=false
+ro.storage_manager.enabled=true
+ro.com.google.gms.car.enable_gearhead_service=true
+ro.error.receiver.system.apps=com.google.android.gms
+ro.photos.google_restore=true
+ro.backup.cloud_backup_enabled=true
+ro.com.google.ime.system_lm_dir=/product/usr/share/ime/google/d3_lms
+
+# SetupWizard Configuration
+setupwizard.theme=glif_v4_expressive
+setupwizard.feature.day_night_mode=true
+setupwizard.feature.portal_notification=true
+
+# Google Sounds & UI Defaults
+ro.config.ringtone=Your_new_adventure.ogg
+ro.config.notification_sound=Popcorn.ogg
+ro.config.alarm_alert=Bright_morning.ogg
+
+# Camera Extensions
+ro.vendor.camera.extensions.package=com.google.android.apps.camera.services
+ro.vendor.camera.extensions.service=com.google.android.apps.camera.services.ExtensionsService
