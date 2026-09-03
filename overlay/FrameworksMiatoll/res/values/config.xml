@@ -101,63 +101,34 @@
         <item>100</item>
     </integer-array>
 
-    <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
-         for debouncing the light sensor.  Different constants are used to debounce the light sensor
-         when adapting to brighter or darker environments.  This parameter controls how quickly
-         brightness changes occur in response to an observed change in light level that exceeds the
-         hysteresis threshold. -->
-    <integer name="config_autoBrightnessBrighteningLightDebounce">2000</integer>
-    <integer name="config_autoBrightnessDarkeningLightDebounce">4000</integer>
+    <!-- Stability requirements in milliseconds for accepting a new brightness level. -->
+    <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">2000</integer>
 
-    <!-- Array of desired screen brightness in nits corresponding to the lux values
-         in the config_autoBrightnessLevels array. As with config_screenBrightnessMinimumNits and
-         config_screenBrightnessMaximumNits, the display brightness is defined as the measured
-         brightness of an all-white image.
-         If this is defined then:
-            - config_autoBrightnessLcdBacklightValues should not be defined
-            - config_screenBrightnessNits must be defined
-            - config_screenBrightnessBacklight must be defined
-         This array should have size one greater than the size of the config_autoBrightnessLevels
-         array. The brightness values must be non-negative and non-decreasing. This must be
-         overridden in platform specific overlays -->
+    <!-- Array of desired screen brightness in nits corresponding to the lux values -->
     <integer-array name="config_autoBrightnessDisplayValuesNits">
-      <item>5</item>     <!--  0 - 1 -->
-      <item>10</item>    <!--  1 - 2 -->
-      <item>18</item>    <!--  2 - 3 -->
-      <item>22</item>    <!--  3 - 4 -->
-      <item>24</item>    <!--  4 - 8 -->
-      <item>31</item>    <!--  8 - 12 -->
-      <item>35</item>    <!--  12 - 20 -->
-      <item>41</item>    <!--  20 - 33 -->
-      <item>48</item>    <!--  33 - 55 -->
-      <item>56</item>    <!--  55 - 90 -->
-      <item>66</item>    <!--  90 - 148 -->
-      <item>80</item>    <!--  148 - 245 -->
-      <item>98</item>    <!--  245 - 403 -->
-      <item>125</item>   <!--  403 - 665 -->
-      <item>162</item>   <!--  665 - 1097 -->
-      <item>208</item>   <!--  1097 - 1808 -->
-      <item>265</item>   <!--  1808 - 2981 -->
-      <item>328</item>   <!--  2981 - 5000 -->
-      <item>450</item>   <!--  5000+ -->
+        <item>4</item>     <!--  0 - 1 -->
+        <item>8</item>     <!--  1 - 2 -->
+        <item>15</item>    <!--  2 - 3 -->
+        <item>20</item>    <!--  3 - 4 -->
+        <item>26</item>    <!--  4 - 8 -->
+        <item>34</item>    <!--  8 - 12 -->
+        <item>42</item>    <!--  12 - 20 -->
+        <item>50</item>    <!--  20 - 33 -->
+        <item>60</item>    <!--  33 - 55 -->
+        <item>75</item>    <!--  55 - 90 -->
+        <item>95</item>    <!--  90 - 148 -->
+        <item>120</item>   <!--  148 - 245 -->
+        <item>150</item>   <!--  245 - 403 -->
+        <item>190</item>   <!--  403 - 665 -->
+        <item>240</item>   <!--  665 - 1097 -->
+        <item>300</item>   <!--  1097 - 1808 -->
+        <item>375</item>   <!--  1808 - 2981 -->
+        <item>450</item>   <!--  2981 - 5000 -->
+        <item>550</item>   <!--  5000+ (Sunlight HBM Boost) -->
     </integer-array>
 
-    <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
-         The N entries of this array define N + 1 control points as follows:
-         (1-based arrays)
-         Point 1:            (0, value[1]):             lux <= 0
-         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
-         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
-         ...
-         Point N+1: (level[N], value[N+1]):  level[N] < lux
-         The control points must be strictly increasing.  Each control point
-         corresponds to an entry in the brightness backlight values arrays.
-         For example, if lux == level[1] (first element of the levels array)
-         then the brightness will be determined by value[2] (second element
-         of the brightness values array).
-         Spline interpolation is used to determine the auto-brightness
-         backlight values for lux levels between these control points.
-         Must be overridden in platform specific overlays -->
+    <!-- Array of light sensor lux values to define our levels for auto backlight brightness support. -->
     <integer-array name="config_autoBrightnessLevels">
         <item>1</item>
         <item>2</item>
@@ -179,20 +150,18 @@
         <item>5000</item>
     </integer-array>
 
-    <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
-         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
+    <!-- Flag indicating whether we should enable the automatic brightness in Settings. -->
     <bool name="config_automatic_brightness_available">true</bool>
 
-    <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx. -->
+    <!-- Indicate available ColorDisplayManager.COLOR_MODE_xxx: 0=Natural, 1=Boosted, 2=Saturated, 3=Automatic (P3) -->
     <integer-array name="config_availableColorModes">
         <item>0</item> <!-- COLOR_MODE_NATURAL   -->
         <item>1</item> <!-- COLOR_MODE_BOOSTED   -->
+        <item>2</item> <!-- COLOR_MODE_SATURATED -->
         <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
     </integer-array>
 
-    <!-- Flag specifying whether WFC over IMS should be available for carrier: independent of
-         carrier provisioning. If false: hard disabled. If true: then depends on carrier
-         provisioning, availability etc -->
+    <!-- Flag specifying whether WFC over IMS should be available for carrier -->
     <bool name="config_carrier_wfc_ims_available">true</bool>
 
     <!-- Default list of files pinned by the Pinner Service -->
@@ -205,6 +174,9 @@
         <item>"/system/bin/surfaceflinger"</item>
     </string-array>
 
+    <!-- Should the camera app be pinned in memory -->
+    <bool name="config_pinnerCameraApp">true</bool>
+
     <!-- Flag specifying whether VoLTE is available on device -->
     <bool name="config_device_volte_available">true</bool>
 
@@ -214,27 +186,25 @@
     <!-- Flag specifying whether WFC over IMS is available on device -->
     <bool name="config_device_wfc_ims_available">true</bool>
 
-    <!-- The following two arrays specify which color space to use for display composition when a
-         certain color mode is active.
-         Composition color spaces are defined in android.view.Display.COLOR_MODE_xxx, and color
-         modes are defined in ColorDisplayManager.COLOR_MODE_xxx and
-         ColorDisplayManager.VENDOR_COLOR_MODE_xxx.
-         The color space COLOR_MODE_DEFAULT (0) lets the system select the most appropriate
-         composition color space for currently displayed content. Other values (e.g.,
-         COLOR_MODE_SRGB) override system selection; these other color spaces must be supported by
-         the device for for display composition.
-         If a color mode does not have a corresponding color space specified in this array, the
-         currently set composition color space will not be modified.-->
+    <!-- Color spaces for display composition: 0=Default, 9=Display P3 -->
     <integer-array name="config_displayCompositionColorModes">
         <item>0</item> <!-- COLOR_MODE_NATURAL   -->
         <item>1</item> <!-- COLOR_MODE_BOOSTED   -->
+        <item>2</item> <!-- COLOR_MODE_SATURATED -->
         <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
     </integer-array>
     <integer-array name="config_displayCompositionColorSpaces">
         <item>0</item> <!-- COLOR_MODE_DEFAULT    -->
         <item>0</item> <!-- COLOR_MODE_DEFAULT    -->
+        <item>0</item> <!-- COLOR_MODE_DEFAULT    -->
         <item>9</item> <!-- COLOR_MODE_DISPLAY_P3 -->
     </integer-array>
+
+    <!-- Accelerate color matrix transformations using DPU / GPU hardware -->
+    <bool name="config_setColorTransformAccelerated">true</bool>
+
+    <!-- Control whether Night display is available -->
+    <bool name="config_nightDisplayAvailable">true</bool>
 
     <!-- If true, the doze component is not started until after the screen has been
          turned off and the screen off animation has been performed. -->
@@ -376,30 +346,26 @@
          that can be set by the user. -->
     <integer name="config_screenBrightnessDoze">12</integer>
 
-    <!-- An array of floats describing the screen brightness in nits corresponding to the backlight
-         values in the config_screenBrightnessBacklight array.  On OLED displays these  values
-         should be measured with an all white image while the display is in the fully on state.
-         Note that this value should *not* reflect the maximum brightness value for any high
-         brightness modes but only the maximum brightness value obtainable in a sustainable manner.
-         This array should be equal in size to config_screenBrightnessBacklight -->
+    <!-- An array of floats describing the screen brightness in nits corresponding to the backlight -->
     <integer-array name="config_screenBrightnessNits">
         <item>2</item>
-        <item>450</item>
+        <item>500</item>
     </integer-array>
 
-    <!-- Default screen brightness setting
-         Must be in the range specified by minimum and maximum.
-         Equivalent to 67/255 (default for this device)    -->
+    <!-- Default screen brightness setting -->
     <item name="config_screenBrightnessSettingDefaultFloat" format="float" type="dimen">0.26274509804</item>
 
-    <!-- Maximum screen brightness allowed by the power manager.
-         The user is forbidden from setting the brightness above this level.  -->
+    <!-- Maximum screen brightness allowed by the power manager. -->
     <item name="config_screenBrightnessSettingMaximumFloat" format="float" type="dimen">1.0</item>
 
-    <!-- Minimum screen brightness setting allowed by power manager.
-         The user is forbidden from setting the brightness below this level.
-         Equivalent to 1/255. -->
+    <!-- Minimum screen brightness setting allowed by power manager (True 0.0 float = 1 nit minimum) -->
     <item name="config_screenBrightnessSettingMinimumFloat" format="float" type="dimen">0.0</item>
+
+    <!-- Dim screen brightness setting -->
+    <item name="config_screenBrightnessDimFloat" format="float" type="dimen">0.015</item>
+
+    <!-- Device has a power-button integrated side fingerprint sensor -->
+    <bool name="config_is_powerbutton_fps">true</bool>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
@@ -495,5 +461,17 @@
     <!-- Whether WM DisplayContent supports high performance transitions
          (lower-end devices may want to disable) -->
     <bool name="config_deviceSupportsHighPerfTransitions">false</bool>
+
+    <!-- The component name for the system-wide captions manager service (Live Caption) -->
+    <string name="config_defaultSystemCaptionsManagerService" translatable="false">com.google.android.as/com.google.android.apps.miphone.aiai.captions.SystemCaptionsManagerService</string>
+
+    <!-- Indicates whether the system wide captions service should also support call captioning. -->
+    <bool name="config_systemCaptionsServiceCallsEnabled">true</bool>
+
+    <!-- The package name for the system's content capture service. -->
+    <string name="config_defaultContentCaptureService" translatable="false">com.google.android.as/com.google.android.apps.miphone.aiai.contentcapture.ContentCaptureService</string>
+
+    <!-- The package name for the system's translation service (Live Translate). -->
+    <string name="config_defaultTranslationService" translatable="false">com.google.android.as/com.google.android.apps.miphone.aiai.translation.TranslationService</string>
 
 </resources>
